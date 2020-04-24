@@ -4,24 +4,26 @@ using System.Text;
 
 namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
         public int QtMovimentos { get; protected set; }
-        public Tabuleiro Tabuleiro { get; protected set; }
+        public Tabuleiro Tab { get; protected set; }
 
-        public Peca(Tabuleiro tabuleiro, Cor cor)
+        public Peca(Tabuleiro tab, Cor cor)
         {
             Posicao = null;
             Cor = cor;
-            Tabuleiro = tabuleiro;
+            Tab = tab;
             QtMovimentos = 0;
         }
 
-        public void incrementarQtdMovimentos()
+        public void IncrementarQtdMovimentos()
         {
             QtMovimentos++;
         }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }
